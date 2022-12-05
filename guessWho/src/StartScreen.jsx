@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
 import './App.css'
+import { useEffect, useState } from 'react'
+import GameBoard from './GameBoard'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
 
 // Components and data import
 import { filteredCards } from './filteredCards'
@@ -10,44 +13,43 @@ function getRndInteger(min, max) {
     return rndmNum
 }
 
-function StartScreen() {
-    const [cards, setCards] = useState([])
+function StartScreen({cards, setCards}) {
     const [gameCards, setGameCards] = useState([])
 
-    let i = 0
-    function random24cards() {
-        let rndmInt = getRndInteger(1, 67)
-        // switch i to rndmInt and figure out how to check off prevState to avoid duplicates
-        let addPoke = filteredCards[i]
-        setCards((prev) => [...prev, addPoke])
-    }
-
+    
     useEffect(() => {
+        let i = 0
+        let tempCards = []
+
         while (i < 24) {
-            random24cards()
-            i++
+            let rndmInt = getRndInteger(0, 69)
+            let addPoke = filteredCards[rndmInt]
+
+            if (!tempCards.includes(addPoke)) {
+                tempCards.push(addPoke)
+                i++
+            }
         }
+        
+        let updatedCards = tempCards.map((x) => ({ ...x, "faceUp": true }))
+        setCards(updatedCards)
+       
+
     }, [])
-
-    useEffect(() => {
-        let updatedCards = cards.map((x) => ({ ...x, "faceUp": true }))
-        setGameCards(updatedCards)
-        console.log(gameCards)
-    }, [cards])
-
+    
     return (
         <div className="App">
             <div>
+                <h1>Start Screen</h1> 
                 <a></a>
-                <a href="https://reactjs.org" target="_blank">
+                <a >
                     <img src='https://github.com/larswan/Guess-Who/blob/main/guessWho/pokeball%20icon.png?raw=true' className="logo" alt="React logo" />
                 </a>
             </div>
-            <GameBoard cards={gameCards} setGameCards={setGameCards} />
             <div>
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-                <Button variant="contained">Hello World</Button>
-
+                <GameBoard cards={cards} setGameCards={setCards} />
+                {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+                <Button variant="contained">Hello World</Button> */}
             </div>
         </div>
     )

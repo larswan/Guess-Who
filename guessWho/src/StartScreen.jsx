@@ -33,6 +33,21 @@ function StartScreen({cards, setCards}) {
         
         let updatedCards = tempCards.map((x) => ({ ...x, "faceUp": true }))
         setCards(updatedCards)
+
+        const postRequest = () => {
+                fetch("http://localhost:3000/CardSets", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedCards),
+            }
+            
+            )
+
+
+        }
+        postRequest()
        
 
     }, [])

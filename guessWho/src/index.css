@@ -19,6 +19,7 @@ h1 {
 }
 
 .CardContainer {
+  display: flex;
   flex-wrap: wrap;
 }
 

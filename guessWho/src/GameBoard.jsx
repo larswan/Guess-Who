@@ -1,9 +1,9 @@
 import CardContainer from './CardContainer'
 
-const GameBoard = ({cards, setCards}) => {
+const GameBoard = ({cards, setGameCards}) => {
     return(
-    <div className = "CardContainer">
-        <CardContainer cards={cards} setCards={setCards} />
+    <div >
+        <CardContainer cards={cards} setGameCards={setGameCards} />
     </div>
     )
 }

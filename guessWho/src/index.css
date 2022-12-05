@@ -1,0 +1,34 @@
+:root {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #ab2c2c;
+}
+
+/* Vertically centers with place-item and min-height.  */
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.CardContainer {
+  flex-wrap: wrap;
+}
+
+.Card {
+  width: 140px;
+  padding: .5em;
+  border-radius: 10px;
+ 
+}
+
+.Card:hover {
+  filter: drop-shadow(0 0 .5em #fff93d);
+}

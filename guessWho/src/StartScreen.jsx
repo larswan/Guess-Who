@@ -1,8 +1,7 @@
 import './App.css'
 import { useEffect, useState } from 'react'
-import GameBoard from './GameBoard'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
+import PickCard from './PickCard'
 
 // Components and data import
 import { filteredCards } from './filteredCards'
@@ -13,10 +12,9 @@ function getRndInteger(min, max) {
     return rndmNum
 }
 
-function StartScreen({cards, setCards}) {
+function StartScreen({cards, setCards, playerTurn}) {
     const [gameCards, setGameCards] = useState([])
 
-    
     useEffect(() => {
         let i = 0
         let tempCards = []
@@ -42,29 +40,28 @@ function StartScreen({cards, setCards}) {
                 },
                 body: JSON.stringify(updatedCards),
             }
-            
             )
-
-
         }
         postRequest()
-       
-
     }, [])
     
     return (
         <div className="App">
             <div>
-                <h1>Start Screen</h1> 
-                <a></a>
+                <h1>Player {playerTurn} choose your card:</h1> 
+                {/* <a></a>
                 <a >
                     <img src='https://github.com/larswan/Guess-Who/blob/main/guessWho/pokeball%20icon.png?raw=true' className="logo" alt="React logo" />
-                </a>
+                </a> */}
             </div>
-            <div>
-                <GameBoard cards={cards} setGameCards={setCards} />
-                {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-                <Button variant="contained">Hello World</Button> */}
+            <div className="CardContainer">
+                {
+                    cards.map((card) => {
+                        return (
+                            <PickCard card={card} cards={cards}  />
+                        )
+                    })
+                }
             </div>
         </div>
     )

@@ -12,6 +12,7 @@ import StartScreen from './StartScreen'
 
 function App() {
   const [cards, setCards] = useState([])
+  const [playerTurn, setPlayerTurn] = useState([1])
 
   const Home = () => {
     const navigate = useNavigate() 
@@ -33,7 +34,7 @@ function App() {
     },
     {
       path: "/StartScreen", 
-      element: <StartScreen cards={cards} setCards={setCards}  />,
+      element: <StartScreen cards={cards} setCards={setCards} playerTurn={playerTurn} />,
     },
   ])
   

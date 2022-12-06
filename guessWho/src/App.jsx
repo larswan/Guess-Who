@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+// import './App.css'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -9,6 +9,7 @@ import {
 
 import PlayScreen from './PlayScreen'
 import StartScreen from './StartScreen'
+import {placeholder24cards} from './placeholder24cards'
 
 function App() {
   const [cards, setCards] = useState([])
@@ -136,6 +137,7 @@ function App() {
 
   const [p1CardSet, setP1CardSet] = useState([])
   const [p2CardSet, setP2CardSet] = useState([])
+  const [displayCards, setDisplayCards] = useState([])
 
   useEffect(()=>{
     setP1CardSet(cards)
@@ -147,11 +149,15 @@ function App() {
   useEffect(()=>{
    if(playerTurn==1){
      document.body.style.backgroundColor = "#ab2c2c"
+     setDisplayCards(p1CardSet)
     }
     else{
-      
      document.body.style.backgroundColor =  "#2c37ab"
+     setDisplayCards(p2CardSet)
+
    }
+
+
   },[playerTurn])
   
   const Home = () => {
@@ -178,7 +184,7 @@ function App() {
     },
     {
       path: "/PlayScreen", 
-      element: <PlayScreen cards={playerTurn == 1 ? p1CardSet : p2CardSet} setCards={playerTurn == 1 ? setP1CardSet : setP2CardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} playerCard = {playerTurn ==1 ? p1Card : p2Card}  />,
+      element: <PlayScreen cards={displayCards} setCards={playerTurn == 1 ? setP1CardSet : setP2CardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} playerCard = {playerTurn ==1 ? p1Card : p2Card}  />,
     },
   ])
   

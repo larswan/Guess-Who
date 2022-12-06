@@ -1,4 +1,3 @@
-import './App.css'
 import { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
 import PickCard from './PickCard'
@@ -28,22 +27,9 @@ function StartScreen({cards, setCards, playerTurn, setPlayerTurn, setP1Card, set
             }
         }
         
-        let updatedCards = tempCards.map((x) => ({ ...x, "faceUp": true }))
-        setCards(updatedCards)
+        let updatedCards = tempCards.map((x) => ({"name":x.name, "images": x.images, "id": x.nationalPokedexNumbers}))
+        setCards(tempCards)
         
-        // Post Request
-        // const postRequest = () => {
-        //     let res = fetch("http://localhost:3000/CardSets", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify(updatedCards),
-        //     }
-        //     )
-        //     console.log(res.ok)
-        // }
-        // postRequest()
     }, [])
     
     return (

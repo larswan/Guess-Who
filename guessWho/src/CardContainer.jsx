@@ -7,9 +7,9 @@ console.log(cards)
     return(
         <div className="CardContainer" >
             {
-                cards.map((card)=>{
+                cards.map((card, i)=>{
                     return (
-                        <Card card={card} cards={cards} setGameCards={setGameCards} />
+                        <Card card={card} cards={cards} setGameCards={setGameCards} i={i}/>
                     )
                 })
             }

@@ -1,13 +1,41 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Forms = ({setPlayerTurn, cards}) => {
     const [formStep, setFormStep] = useState('player1Question')
-    const [p1q, setp1q] = useState('Player 1 hasnt asked a question')
-    const [p2q, setp2q] = useState('Player 2 hasnt asked a question')
-    const [p1r, setp1r] = useState('Player 1 has no response')
-    const [p2r, setp2r] = useState('Player 2 has no response')
-    
-    
+    const [p1q, setp1q] = useState('')
+    const [p2q, setp2q] = useState('')
+    const [p1r, setp1r] = useState('')
+    const [p2r, setp2r] = useState('')
+    const [oldP1Q, setOldP1Q] = useState('')
+    const [oldP2Q, setOldP2Q] = useState('')
+
+    // Adding question marks to questions that dont have them
+    useEffect(()=>{
+    const questionMarkAdder = (string) => {
+        if(string.includes('?') || string == ''){
+            return
+        }
+        else {
+            let tempString = `${string}?`
+            console.log(tempString)
+            setOldP1Q(tempString)
+        }
+    } 
+    questionMarkAdder(oldP1Q)
+    },[oldP1Q])
+        useEffect(() => {
+            const questionMarkAdder = (string) => {
+                if (string.includes('?') || string == '') {
+                    return
+                }
+                else {
+                    let tempString = `${string}?`
+                    console.log(tempString)
+                    setOldP1Q(tempString)
+                }
+            }
+            questionMarkAdder(oldP2Q)
+        }, [oldP2Q])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -20,31 +48,33 @@ const Forms = ({setPlayerTurn, cards}) => {
                 
                 {
                     formStep === "player1Response" && <div>
-                        <h3> {p2q} </h3>
-                        <input id="player1Response" className="input" onChange={(e) => { setp1r(e.target.value); console.log(p1r) }} type="textarea" placeholder="Yes or No" name="player1Response" /> <br />
-                        <button className="input" onClick={() => { setFormStep('player1Question')}}> Next </button>
+                        <h3> {oldP2Q} </h3>
+                        <input required id="player1Response" className="input" onChange={(e) => { setp1r(e.target.value); console.log(p1r) }} type="textarea" placeholder="Yes or No" name="player1Response" /> <br />
+                        <button className="input" type="submit" onClick={() => { setFormStep('player1Question')}}> Next </button>
                     </div>
                 }
                 {
                     formStep === "player1Question" && <div>
-                        <h2>Player 1 Enter Your Question</h2>
-                        <input id="player1Question" onChange={(e) => { setp1q(e.target.value); console.log(p1q) }} type='textarea' placeholder="What is your question?" name="player1question" className="input" /> <br />
-                        <button className="input" onClick={() => { setFormStep('player2Response'); setPlayerTurn(2) }}> Next </button>
+                        {p1q=='' ? <a></a> : <h1>{oldP1Q}<br/>{p2r}</h1> }
+                        <h3>Player 1 Enter Your Question</h3>
+                        <input required id="player1Question" onChange={(e) => { setp1q(e.target.value); console.log(p1q) }} type='textarea' placeholder="What is your question?" name="player1question" className="input" /> <br />
+                        <button required className="input" type="submit" onClick={() => { setOldP1Q(p1q) ;setFormStep('player2Response'); setPlayerTurn(2) ; console.log(cards)}}> Next </button>
                     </div>
                 }
                 
                 {
                     formStep === "player2Response" && <div>
-                        <h3> {p1q} </h3>
-                        <input id="player2Response" className="input" onChange={(e) => { setp2r(e.target.value); console.log(p2r) }} type="textarea" placeholder="Yes or No" name="player2Response" /> <br />
-                        <button className="input" onClick={() => { setFormStep('player2Question')}}> Next </button>
+                        <h3> {oldP1Q} </h3>
+                        <input required id="player2Response" className="input" onChange={(e) => { setp2r(e.target.value); console.log(p2r) }} type="textarea" placeholder="Yes or No" name="player2Response" /> <br />
+                        <button className="input" type="submit" onClick={() => { setFormStep('player2Question')}}> Next </button>
                     </div>
                 }
                 {
                     formStep === "player2Question" && <div>
-                        <h2>Player 2 Enter Your Question</h2>
-                        <input id="player2Question" onChange={(e) => { setp2q(e.target.value); console.log(p2q) }} type='textarea' placeholder="What is your question?" name="player2question" className="input" /> <br />
-                        <button className="input" onClick={() => { setFormStep('player1Response'); setPlayerTurn(1) }}> Next </button>
+                        {p2q == '' ? <a></a> : <h1>You asked: {oldP2Q} <br />They said: {p1r}</h1>}
+                        <h3>Player 2 Enter Your Question</h3>
+                        <input required id="player2Question" onChange={(e) => { setp2q(e.target.value); console.log(p2q) }} type='textarea' placeholder="What is your question?" name="player2question" className="input" /> <br />
+                        <button className="input" type="submit" onClick={() => { setOldP2Q(p2q); setFormStep('player1Response'); setPlayerTurn(1); console.log(cards) }}> Next </button>
                     </div>
                 }
             </form>

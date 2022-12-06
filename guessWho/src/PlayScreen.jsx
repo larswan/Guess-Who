@@ -7,9 +7,8 @@ import Forms from './Forms'
 
 const PlayScreen = ({cards, playerTurn, setPlayerTurn, playerCard, setCards}) => {
     return(
-        <div className="lowerPlayScreen">
-            <h1>Player {playerTurn}'s turn</h1> 
-            <GameBoard cards={cards} />
+        <div>
+            <GameBoard cards={cards} setGameCards={setCards}/><br/>
             <div className="lowerPlayScreen" >
                 <PlayerCard card={playerCard} />
                 <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCards={setCards} />

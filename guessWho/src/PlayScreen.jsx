@@ -9,9 +9,15 @@ import { useNavigate } from "react-router-dom";
 <Button variant="contained">Hello World</Button>  */}
 
 const PlayScreen = ({cards, playerTurn, setPlayerTurn, playerCard, setCards}) => {
-    
+    console.log(cards.length)
+
     const navigate = useNavigate()
-    navigate("/")
+
+    useEffect(() => {
+        if (cards.length < 24) {
+            navigate("/")
+        }
+    }, [])
 
     return(
         <div>

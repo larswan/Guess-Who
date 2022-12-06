@@ -1,19 +1,26 @@
-function PickCard({ card, playerTurn, setPlayerTurn }) {
-    
+import { useNavigate } from "react-router-dom";
+import {useEffect } from "react"
+
+
+function PickCard({ card, playerTurn, setPlayerTurn, setP1Card, setP2Card }) {
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        setPlayerTurn(1)
+    },[])
+
+
     const clickHandler = (card) => {
         if (playerTurn === 1){
-            //post card to player1 card
-
+            setP1Card(card)
             setPlayerTurn(2)
         }
         else {
-            // Post card to player2 card
             // Route to player1screen
-
+            setP2Card(card)
             setPlayerTurn(1)
+            navigate("/PlayScreen")}
         }
-        // ADD POST REQUEST to Add as player 1 or 2 card 
-    }
 
     return (
         <div>

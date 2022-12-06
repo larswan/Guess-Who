@@ -12,7 +12,7 @@ function getRndInteger(min, max) {
     return rndmNum
 }
 
-function StartScreen({cards, setCards, playerTurn, setPlayerTurn}) {
+function StartScreen({cards, setCards, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
 
     useEffect(() => {
         let i = 0
@@ -30,19 +30,20 @@ function StartScreen({cards, setCards, playerTurn, setPlayerTurn}) {
         
         let updatedCards = tempCards.map((x) => ({ ...x, "faceUp": true }))
         setCards(updatedCards)
-
-        const postRequest = () => {
-            let res = fetch("http://localhost:3000/CardSets", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(updatedCards),
-            }
-            )
-            console.log(res.ok)
-        }
-        postRequest()
+        
+        // Post Request
+        // const postRequest = () => {
+        //     let res = fetch("http://localhost:3000/CardSets", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify(updatedCards),
+        //     }
+        //     )
+        //     console.log(res.ok)
+        // }
+        // postRequest()
     }, [])
     
     return (
@@ -58,7 +59,7 @@ function StartScreen({cards, setCards, playerTurn, setPlayerTurn}) {
                 {
                     cards.map((card) => {
                         return (
-                            <PickCard card={card} playerTurn = {playerTurn} setPlayerTurn={setPlayerTurn} />
+                            <PickCard card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card} />
                         )
                     })
                 }

@@ -58,14 +58,19 @@ h1 {
   width: 196px;
   padding: .5em;
   border-radius: 15px; 
-}
+  /* position: fixed;
+  top: 0;
+  transition: top ease 0.5s;  */
+  }
+/* 
+  playerCard:hover {
+    top: -10px;
+  } */
 
 .input{
   width: 39em;
   height: 1.5em;
 }
-
-
 
 /* POKEBALL LANDING PAGE*/
 .logo {

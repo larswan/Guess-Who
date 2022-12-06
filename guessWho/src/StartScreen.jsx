@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Button from '@mui/material/Button'
 import PickCard from './PickCard'
+import { useNavigate } from "react-router-dom";
 
 // Components and data import
 import { filteredCards } from './filteredCards'
@@ -12,8 +13,17 @@ function getRndInteger(min, max) {
 }
 
 function StartScreen({cards, setCards, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
+    const navigate = useNavigate()
+    
+    useEffect(() => {
+        if (cards.length < 24) {
+            navigate("./")
+        }
+    }, [])
+
 
     useEffect(() => {
+        console.log(cards)
         let i = 0
         let tempCards = []
 

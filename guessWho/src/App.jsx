@@ -14,6 +14,16 @@ function App() {
   const [cards, setCards] = useState([])
   const [playerTurn, setPlayerTurn] = useState([1])
 
+  useEffect(()=>{
+   if(playerTurn==1){
+     document.body.style.backgroundColor = "#ab2c2c"
+    }
+    else{
+      
+     document.body.style.backgroundColor =  "#2c37ab"
+   }
+  },[playerTurn])
+  
   const Home = () => {
     const navigate = useNavigate() 
     return (
@@ -34,7 +44,7 @@ function App() {
     },
     {
       path: "/StartScreen", 
-      element: <StartScreen cards={cards} setCards={setCards} playerTurn={playerTurn} />,
+      element: <StartScreen cards={cards} setCards={setCards} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn}/>,
     },
   ])
   

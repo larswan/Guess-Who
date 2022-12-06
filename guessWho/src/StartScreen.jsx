@@ -12,8 +12,7 @@ function getRndInteger(min, max) {
     return rndmNum
 }
 
-function StartScreen({cards, setCards, playerTurn}) {
-    const [gameCards, setGameCards] = useState([])
+function StartScreen({cards, setCards, playerTurn, setPlayerTurn}) {
 
     useEffect(() => {
         let i = 0
@@ -33,7 +32,7 @@ function StartScreen({cards, setCards, playerTurn}) {
         setCards(updatedCards)
 
         const postRequest = () => {
-                fetch("http://localhost:3000/CardSets", {
+            let res = fetch("http://localhost:3000/CardSets", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -41,6 +40,7 @@ function StartScreen({cards, setCards, playerTurn}) {
                 body: JSON.stringify(updatedCards),
             }
             )
+            console.log(res.ok)
         }
         postRequest()
     }, [])
@@ -58,7 +58,7 @@ function StartScreen({cards, setCards, playerTurn}) {
                 {
                     cards.map((card) => {
                         return (
-                            <PickCard card={card} cards={cards}  />
+                            <PickCard card={card} playerTurn = {playerTurn} setPlayerTurn={setPlayerTurn} />
                         )
                     })
                 }

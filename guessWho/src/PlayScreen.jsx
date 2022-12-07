@@ -11,7 +11,8 @@ const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, secretCard
     const navigate = useNavigate()
 
     useEffect(() => {
-        soundClip()
+        // soundClip()
+        console.log(secretCard)
     },[])
        
     if (cardSet.length < 1) {

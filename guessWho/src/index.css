@@ -46,13 +46,13 @@ h1 {
 .CardGuess {
   position: relative;
   width: 100%;
-    filter: drop-shadow(0 0 .15em #ffffffac);
+    filter: drop-shadow(0 0 .3em #ffffff);
   /* height: 192.5px; */
   border-radius: .4em;
 }
 
 .CardGuess:hover {
-  filter: drop-shadow(0 0 .4em #ffffff);
+  filter: drop-shadow(0 0 .4em #ff0000);
 }
 
 .Card {

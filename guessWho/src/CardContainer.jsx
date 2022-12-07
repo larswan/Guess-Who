@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 
 
 function CardContainer({cards, setGameCards}) {
-    console.log(cards.length)
     
     return(
         <div className="CardContainer" >

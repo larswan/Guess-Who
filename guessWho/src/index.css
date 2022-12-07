@@ -39,6 +39,7 @@ h1 {
 
 .Card {
   width: 140px;
+  height: 192.5px;
   padding: .5em;
   border-radius: 15px;
 }
@@ -53,6 +54,16 @@ h1 {
   justify-content: center;
 }
 
+.GuessButton {
+  width: 9em;
+  transition: width .2s;
+}
+
+.GuessButton:hover {
+  width: 9.3em;
+  
+}
+
 .playerCard {
   height: 265px;
   width: 196px;
@@ -62,6 +73,11 @@ h1 {
   top: 0;
   transition: top ease 0.5s;  */
   }
+
+  .playerCard:hover{
+      filter: drop-shadow(0 0 2em #fff93d);
+  }
+
 /* 
   playerCard:hover {
     top: -10px;

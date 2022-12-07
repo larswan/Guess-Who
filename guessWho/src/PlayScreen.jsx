@@ -1,6 +1,7 @@
 import GameBoard from './GameBoard'
 import PlayerCard from './PlayerCard'
 import Forms from './Forms'
+import GuessCard from './GuessCard'
 import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 
@@ -10,12 +11,11 @@ import { useNavigate } from "react-router-dom";
 
 const PlayScreen = ({cards, playerTurn, setPlayerTurn, playerCard, setCards}) => {
     console.log(cards.length)
-
     const navigate = useNavigate()
 
     useEffect(() => {
         if (cards.length < 24) {
-            navigate("/")
+            navigate("/StartScreen")
         }
     }, [])
 
@@ -25,6 +25,7 @@ const PlayScreen = ({cards, playerTurn, setPlayerTurn, playerCard, setCards}) =>
             <div className="lowerPlayScreen" >
                 <PlayerCard card={playerCard} />
                 <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCards={setCards} />
+                <GuessCard playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} />
             </div>
         </div>   
     )

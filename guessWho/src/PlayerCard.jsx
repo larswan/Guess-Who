@@ -6,7 +6,7 @@ const PlayerCard = ({secretCard}) => {
 
     return(
         <div>
-            <img onMouseOver={() => { setHover(true) }} onMouseOut={() => { setHover(false) }}  src={ hover ? secretCard.largeImage : faceDownImage } className ="playerCard"/>
+            <img onMouseOver={() => { setHover(true) }} onMouseOut={() => { setHover(false) }}  className="BigCard" src={ hover ? secretCard.largeImage : faceDownImage}/>
         </div>
     )
 }

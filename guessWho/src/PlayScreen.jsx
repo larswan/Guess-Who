@@ -23,9 +23,15 @@ const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, secretCard
         <div>
             <CardContainer cardSet={cardSet} setCardSet={setCardSet} guessMode={guessMode} playerTurn={playerTurn} setGuessMode={setGuessMode} setGuessedCard={setGuessedCard} /><br/>
             <div className = "lowerPlayScreen" >
-                <PlayerCard secretCard={secretCard[playerTurn]} />
-                <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCardSet={setCardSet} />
-                <GuessCard playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} />
+                <div className="PlayerCard">
+                    <PlayerCard secretCard={secretCard[playerTurn]} />
+                </div>
+                <div className="FormContainer">
+                    <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCardSet={setCardSet} />
+                </div>
+                <div >
+                    <GuessCard playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} />
+                </div>
             </div>
         </div>   
     )

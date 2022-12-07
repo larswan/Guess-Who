@@ -60,14 +60,14 @@ const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
             <form className="input" onSubmit={handleSubmit}>
                 {
                     formStep === "player1Response" && <div>
-                        {oldP2Q == '' ? setFormStep(player1Question) : <h3>{oldP2Q}</h3>}
+                        {p2q == '' ? setFormStep(player1Question) : <h3>{oldP2Q}</h3>}
                         <input id="player1Response" className="input" onChange={(e) => { setp1r(e.target.value); console.log(p1r) }} type="textarea" placeholder="Yes or No" name="player1Response" /> <br />
                         <button  className="input" onClick={() => { p1r==''? alert("Please answer player 2's question") : setFormStep('player1Question')}}> Next </button>
                     </div>
                 }
                 {
                     formStep === "player1Question" && <div>
-                        {oldP1Q == '' ? <a></a> : <h1>{oldP1Q}<br />{p2r}</h1>}
+                        {oldP1Q == '' ? <a></a> : <h1>{oldP1Q} "{p2r}"</h1>}
                         <h3>Player 1 Enter Your Question</h3>
                         <input id="player1Question" onChange={(e) => { setp1q(e.target.value); console.log(p1q) }} type='textarea' placeholder="What is your question?" name="player1question" className="input" /> <br />
                         <button  className="input" onClick={() => {p1q=='' ? alert("Please write a question") : p1QdumbFunction()}}> Next </button>
@@ -83,7 +83,7 @@ const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
                 }
                 {
                     formStep === "player2Question" && <div>
-                        {oldP2Q == '' ? <a></a> : <h1>{oldP2Q}<br/>{p1r}</h1>}
+                        {p2q == '' ? <a></a> : <h1>{oldP2Q}<br/>{p1r}</h1>}
                         <h3>Player 2 Enter Your Question</h3>
                         <input  id="player2Question" onChange={(e) => { setp2q(e.target.value); console.log(p2q) }} type='textarea' placeholder="What is your question?" name="player2question" className="input" /> <br />
                         <button  className="input" type="submit" onClick={() => { p2q == '' ? alert("Please write a question") : p2QdumbFunction() }}> Next </button>

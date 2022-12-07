@@ -47,17 +47,7 @@ h1 {
   padding: .3em;
 }
 
-.CardGuess {
-  position: relative;
-  width: 100%;
-  filter: drop-shadow(0 0 .3em #ffffff);
-  /* height: 192.5px; */
-  border-radius: .4em;
-}
 
-.CardGuess:hover {
-  filter: drop-shadow(0 0 .4em rgba(0, 0, 0, 0.45));
-}
 
 .Card {
   position: relative;
@@ -83,6 +73,8 @@ h1 {
   width: 9em;
     filter: drop-shadow(0 0 0em rgba(0, 0, 0, 0.45));
   transition: filter .2s;
+  align-content: right;
+  padding-left: 23px;
 }
 
 .GuessButton:hover {
@@ -110,8 +102,28 @@ h1 {
   }
 
 .FormContainer {
-  width: 35%;
-  padding: 2%;
+  width: 70%;
+  padding: 2%
+  padding-right: 
+}
+
+.FormContainerDiv {
+  display: flex;
+  width: 100%;
+
+
+}
+
+.CardGuess {
+  position: relative;
+  /* width: 100%; */
+  filter: drop-shadow(0 0 .2em #ffffffa9);
+  /* height: 192.5px; */
+  border-radius: .4em;
+}
+
+.CardGuess:hover {
+  filter: drop-shadow(0 0 .5em rgb(255, 255, 255));
 }
 
 h1 {
@@ -125,11 +137,12 @@ h3 {
 .input{
   width: 100%;
   height: 1.5em;
+  margin: .2em
 }
 
-button.input {
+/* button.input {
   align-content: center;
-}
+} */
 
 /* POKEBALL LANDING PAGE*/
 .logo {

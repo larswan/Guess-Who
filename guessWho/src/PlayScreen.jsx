@@ -1,7 +1,6 @@
 import CardContainer from './CardContainer'
 import PlayerCard from './PlayerCard'
 import Forms from './Forms'
-import GuessCard from './GuessCard'
 import { useNavigate } from "react-router-dom";
 import {useEffect}  from 'react'
 import { soundClip } from './soundClip';
@@ -29,11 +28,9 @@ const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, secretCard
                     <PlayerCard secretCard={secretCard[playerTurn]} />
                 </div>
                 <div className="FormContainer">
-                    <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCardSet={setCardSet} />
+                    <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCardSet={setCardSet} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} />
                 </div>
-                <div >
-                    <GuessCard playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} />
-                </div>
+                
             </div>
         </div>   
     )

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import GuessCard from './GuessCard'
 
-const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
+
+const Forms = ({setPlayerTurn, playerTurn, cardToGuess, guessMode, setGuessMode, guessedCard}) => {
     const [formStep, setFormStep] = useState('player1Question')
     const [p1q, setp1q] = useState('')
     const [p2q, setp2q] = useState('')
@@ -61,7 +63,7 @@ const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
     }
 
     return (
-        <div className="formContainerDiv">
+        <div className="FormContainerDiv">
             <form className="input" onSubmit={handleSubmit}>
                 {
                     formStep === "player1Response" && <div>
@@ -95,6 +97,9 @@ const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
                     </div>
                 }
             </form>
+            <div >
+                <GuessCard playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} />
+            </div>
         </div>
     )
 }

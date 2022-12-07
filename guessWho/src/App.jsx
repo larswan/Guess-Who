@@ -143,6 +143,10 @@ function App() {
   const [guessMode, setGuessMode] = useState(false)
   const [guessedCard, setGuessedCard] = useState({})
   const [cardToGuess, setCardToGuess] = useState({})
+  
+
+  // NEW STATES
+  const [cardSet, setCardSet]= useState([])
 
   useEffect(()=>{
     setP1CardSet(cards)
@@ -190,7 +194,7 @@ function App() {
     },
     {
       path: "/StartScreen", 
-      element: <StartScreen cards={cards} setCards={setCards} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card}  />,
+      element: <StartScreen cards={cards} setCards={setCards} setCardSet={setCardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card}  />,
     },
     {
       path: "/PlayScreen", 

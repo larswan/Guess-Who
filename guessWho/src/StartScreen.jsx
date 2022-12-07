@@ -11,7 +11,7 @@ function getRndInteger(min, max) {
     return rndmNum
 }
 
-function StartScreen({cards, setCards, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
+function StartScreen({ cards, setCards, setCardSet, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
     
     const navigate = useNavigate()
     
@@ -25,20 +25,21 @@ function StartScreen({cards, setCards, playerTurn, setPlayerTurn, setP1Card, set
     useEffect(() => {
         let i = 0
         let tempCards = []
+        let addedNumbers = []
         
         while (i < 24) {
             let rndmInt = getRndInteger(0, 69)
             let addPoke = filteredCards[rndmInt]
             
-            if (!tempCards.includes(addPoke)) {
-                tempCards.push({ "name": addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers })
+            if (!addedNumbers.includes(rndmInt)) {
+                tempCards.push({ "name": addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers, "faceUp": true })
+                addedNumbers.push(rndmInt)
                 i++
             }
         }
-        
-        //let updatedCards = tempCards.map((addPoke) => ({"name":addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers}))
+
+        setCardSet([tempCards, tempCards])
         setCards(tempCards)
-        
         console.log(tempCards)
     }, [])
     

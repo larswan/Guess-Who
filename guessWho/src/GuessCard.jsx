@@ -8,6 +8,11 @@ const GuessCard = ({ playerTurn, setPlayerTurn, cardToGuess, guessMode, setGuess
     const navigate = useNavigate()
 
     const handleClick = () => {
+
+        // USE TO TEST PLAYER TURN TYPE STUFF
+        // playerTurn==1?setPlayerTurn(0) : setPlayerTurn(1)
+        // return
+        
         setGuessMode(true)
         console.log(guessMode)
     }
@@ -18,7 +23,7 @@ const GuessCard = ({ playerTurn, setPlayerTurn, cardToGuess, guessMode, setGuess
             navigate("/WinnerScreen")
         }
         else {
-            setPlayerTurn(playerTurn === 1 ? 2 : 1)
+            setPlayerTurn(playerTurn === 0 ? 1 : 0)
         }
     }, [guessedCard])
 

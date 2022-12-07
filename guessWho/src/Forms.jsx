@@ -37,6 +37,7 @@ const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
             questionMarkAdder(oldP2Q)
     }, [oldP2Q])
 
+    // not needed
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("it submitted")

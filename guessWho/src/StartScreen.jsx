@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import PickCard from './PickCard'
 import { useNavigate } from "react-router-dom";
-import PokeBallSpinner from './PokeBallSpinner'
-
 
 // Components and data import
 import { filteredCards } from './filteredCards'
@@ -24,18 +22,23 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card
         if (cardSet==[]) {
             navigate("./")
         }
+        else{
+            setPlayerTurn(0)
+        }
     }, [])
     
+    // generate random 24 cards
     useEffect(() => {
         let tempCards = []
         let i = 0
         let addedNumbers = []
         
         while (i < 24) {
-            let rndmInt = getRndInteger(0, 69)
+            let rndmInt = getRndInteger(1, 69)
             let addPoke = filteredCards[rndmInt]
             
-            if (!addedNumbers.includes(rndmInt)) {
+            // Beedrill doesn't have a small image so forget about it
+            if (!addedNumbers.includes(rndmInt) && rndmInt != 16) {
                 tempCards.push({ "name": addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers, "faceUp": false })
                 addedNumbers.push(rndmInt)
                 i++
@@ -52,7 +55,7 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card
                 <h1>Player {(playerTurn + 1)} choose your card:</h1> 
             </div>
             <div className="CardContainer">
-                {cardSet.length > 0 ?
+                {cardSet.length > 1 && cardSet[1].length>23 ?
                     cardSet[0].map((card) => {
                         return (
                             <PickCard card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card} />

@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
 const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, playerCard, cardToGuess, guessMode, setGuessMode, guessedCard, setGuessedCard }) => {
     const navigate = useNavigate()
 
-    useEffect(() => {
-        //console.log(cardSet)
-        if (cardSet == []) {
-            navigate("/StartScreen")
-        }
-    }, [])
+    
+    if (cardSet.length < 1) {
+        navigate("/StartScreen")
+        return <div></div>
+    }
+    else{
 
     return(
         <div>
@@ -25,6 +25,7 @@ const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, playerCard
             </div>
         </div>   
     )
+}
 }
 
 export default PlayScreen

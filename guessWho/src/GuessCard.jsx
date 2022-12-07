@@ -10,15 +10,14 @@ const GuessCard = ({ playerTurn, setPlayerTurn, cardToGuess, guessMode, setGuess
     const handleClick = () => {
 
         // USE TO TEST PLAYER TURN TYPE STUFF
-        // playerTurn==1?setPlayerTurn(0) : setPlayerTurn(1)
-        // return
+        playerTurn==1?setPlayerTurn(0) : setPlayerTurn(1)
+        return
         
         setGuessMode(true)
         console.log(guessMode)
     }
 
     useEffect(() => {
-        console.log(guessedCard.name + cardToGuess.name)
         if (guessedCard.name == cardToGuess.name) {
             navigate("/WinnerScreen")
         }

@@ -2,17 +2,16 @@ import { useNavigate } from "react-router-dom";
 import {useEffect } from "react"
 
 
-function PickCard({ card, playerTurn, setPlayerTurn, setP1Card, setP2Card }) {
+function PickCard({ card, playerTurn, setPlayerTurn, setP1Card, setP2Card, secretCard, setSecretCard}) {
     const navigate = useNavigate();
-    console.log(card)
 
     const clickHandler = (card) => {
         if (playerTurn === 0){
-            setP1Card(card)
+            setSecretCard([card])
             setPlayerTurn(1)
         }
         else {
-            setP2Card(card)
+            setSecretCard((prev)=>{return [...prev, card]})
             navigate("/PlayScreen")}
         }
 

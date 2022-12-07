@@ -11,14 +11,13 @@ function getRndInteger(min, max) {
     return rndmNum
 }
 
-function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
+function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card, setP2Card, secretCard, setSecretCard}) {
     
     const navigate = useNavigate()
     const [loaded, setLoaded] = useState(false)
     
     //default to landing page if random cards not generated
     useEffect(() => {
-        console.log(cardSet)
         if (cardSet==[]) {
             navigate("./")
         }
@@ -58,7 +57,7 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card
                 {cardSet.length > 1 && cardSet[1].length>23 ?
                     cardSet[0].map((card) => {
                         return (
-                            <PickCard card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card} />
+                            <PickCard key={card.id} card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card} secretCard={secretCard} setSecretCard={setSecretCard}/>
                         )
                     })
                     : null

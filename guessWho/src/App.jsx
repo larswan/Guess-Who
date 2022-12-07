@@ -136,8 +136,9 @@ function App() {
       "large": "https://images.pokemontcg.io/base1/2_hires.png"
     }})
 
-  const [p1CardSet, setP1CardSet] = useState([])
-  const [p2CardSet, setP2CardSet] = useState([])
+  const [secretCard, setSecretCard] = useState([])
+  
+
   const [playerCard, setPlayerCard] = useState({})
   const [displayCards, setDisplayCards] = useState([])
   const [guessMode, setGuessMode] = useState(false)
@@ -165,7 +166,6 @@ function App() {
      setCardToGuess(p1Card)
      setPlayerCard(p2Card)
    }
-   console.log(playerTurn)
   },[playerTurn])
   
   const Home = () => {
@@ -191,11 +191,11 @@ function App() {
     },
     {
       path: "/StartScreen", 
-      element: <StartScreen cardSet={cardSet} setCardSet={setCardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card}  />,
+      element: <StartScreen secretCard={secretCard} setSecretCard={setSecretCard} cardSet={cardSet} setCardSet={setCardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card}  />,
     },
     {
       path: "/PlayScreen", 
-      element: <PlayScreen cardSet={cardSet} setCardSet={setCardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} playerCard={playerCard} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} setGuessedCard={setGuessedCard}/>,
+      element: <PlayScreen cardSet={cardSet} setCardSet={setCardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} secretCard={secretCard} playerCard={playerCard} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} setGuessedCard={setGuessedCard}/>,
     },
     {
       path: "/WinnerScreen", 

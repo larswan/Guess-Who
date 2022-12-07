@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import PickCard from './PickCard'
 import { useNavigate } from "react-router-dom";
 
 // Components and data import
+import PickCard from './PickCard'
 import { filteredCards } from './filteredCards'
 
 //random number generator
@@ -11,7 +11,7 @@ function getRndInteger(min, max) {
     return rndmNum
 }
 
-function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card, setP2Card, secretCard, setSecretCard}) {
+function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setSecretCard}) {
     
     const navigate = useNavigate()
     const [loaded, setLoaded] = useState(false)
@@ -45,7 +45,6 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card
         }
 
         setCardSet([tempCards,tempCards])
-        // setIsLoaded(true)
     }, [])
     
     return (
@@ -57,7 +56,7 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card
                 {cardSet.length > 1 && cardSet[1].length>23 ?
                     cardSet[0].map((card) => {
                         return (
-                            <PickCard key={card.id} card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card} secretCard={secretCard} setSecretCard={setSecretCard}/>
+                            <PickCard key={card.id} card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setSecretCard={setSecretCard}/>
                         )
                     })
                     : null

@@ -7,7 +7,7 @@ const WinnerScreen = ({playerTurn}) => {
 
     return(
         <div>
-            <h1>Player {playerTurn} Wins!</h1>
+            <h1>Player {(playerTurn + 1)} Wins!</h1>
             <h1>Click to Play Again</h1>
             <a></a>
             <a>

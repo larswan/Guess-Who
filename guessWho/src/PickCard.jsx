@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import {useEffect } from "react"
 
 
-function PickCard({ card, playerTurn, setPlayerTurn, setP1Card, setP2Card, secretCard, setSecretCard}) {
+function PickCard({ card, playerTurn, setPlayerTurn, setSecretCard}) {
     const navigate = useNavigate();
 
     const clickHandler = (card) => {

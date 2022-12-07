@@ -17,8 +17,6 @@ function Card({card, cardSet, setCardSet, playerTurn, i, guessMode, setGuessMode
 
             // sub in the new card in a duplicate array
             newCards[i] = newCard
-            console.log(card.faceUp)
-            console.log(newCard.faceUp)
             setCardSet((prev)=>{return [...prev, prev[playerTurn]=newCards]})
         }
     }  

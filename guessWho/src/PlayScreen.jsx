@@ -4,7 +4,7 @@ import Forms from './Forms'
 import GuessCard from './GuessCard'
 import { useNavigate } from "react-router-dom";
 
-const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, secretCard, playerCard, cardToGuess, guessMode, setGuessMode, guessedCard, setGuessedCard }) => {
+const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, secretCard, cardToGuess, guessMode, setGuessMode, guessedCard, setGuessedCard }) => {
     const navigate = useNavigate()
 
     if (cardSet.length < 1) {

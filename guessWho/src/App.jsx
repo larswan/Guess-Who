@@ -9,6 +9,7 @@ import {
 
 import PlayScreen from './PlayScreen'
 import StartScreen from './StartScreen'
+import WinnerScreen from './WinnerScreen'
 import {placeholder24cards} from './placeholder24cards'
 
 function App() {
@@ -137,12 +138,15 @@ function App() {
 
   const [p1CardSet, setP1CardSet] = useState([])
   const [p2CardSet, setP2CardSet] = useState([])
+  const [playerCard, setPlayerCard] = useState({})
   const [displayCards, setDisplayCards] = useState([])
+  const [guessMode, setGuessMode] = useState(false)
+  const [guessedCard, setGuessedCard] = useState({})
+  const [cardToGuess, setCardToGuess] = useState({})
 
   useEffect(()=>{
     setP1CardSet(cards)
     setP2CardSet(cards)
-    console.log(p1CardSet)
   },[cards])
 
   // player turn effects
@@ -150,11 +154,14 @@ function App() {
    if(playerTurn==1){
      document.body.style.backgroundColor = "#ab2c2c"
      setDisplayCards(p1CardSet)
+     setCardToGuess(p2Card)
+     setPlayerCard(p1Card)
     }
     else{
      document.body.style.backgroundColor =  "#2c37ab"
      setDisplayCards(p2CardSet)
-
+     setCardToGuess(p1Card)
+     setPlayerCard(p2Card)
    }
 
 
@@ -184,7 +191,11 @@ function App() {
     },
     {
       path: "/PlayScreen", 
-      element: <PlayScreen cards={displayCards} setCards={playerTurn == 1 ? setP1CardSet : setP2CardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} playerCard = {playerTurn ==1 ? p1Card : p2Card}  />,
+      element: <PlayScreen cards={displayCards} setCards={playerTurn == 1 ? setP1CardSet : setP2CardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} playerCard={playerCard} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} setGuessedCard={setGuessedCard}/>,
+    },
+    {
+      path: "/WinnerScreen", 
+      element: <WinnerScreen guessedCard={guessedCard} playerTurn={playerTurn} />,
     },
   ])
   

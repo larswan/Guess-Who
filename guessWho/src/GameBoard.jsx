@@ -1,11 +1,9 @@
 import CardContainer from './CardContainer'
 
-const GameBoard = ({cards, setGameCards}) => {
-    console.log(cards)
-
+const GameBoard = ({ cards, setGameCards, guessMode, setGuessedCard }) => {
     return(
     <div >
-        <CardContainer cards={cards} setGameCards={setGameCards} />
+            <CardContainer cards={cards} setGameCards={setGameCards} guessMode={guessMode} setGuessedCard={setGuessedCard} />
     </div>
     )
 }

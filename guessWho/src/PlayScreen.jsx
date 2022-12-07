@@ -5,12 +5,7 @@ import GuessCard from './GuessCard'
 import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 
-
-{/* <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-<Button variant="contained">Hello World</Button>  */}
-
-const PlayScreen = ({cards, playerTurn, setPlayerTurn, playerCard, setCards}) => {
-    console.log(cards.length)
+const PlayScreen = ({ cards, playerTurn, setPlayerTurn, playerCard, setCards, cardToGuess, guessMode, setGuessMode, guessedCard, setGuessedCard }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -21,11 +16,11 @@ const PlayScreen = ({cards, playerTurn, setPlayerTurn, playerCard, setCards}) =>
 
     return(
         <div>
-            <GameBoard cards={cards} setGameCards={setCards}/><br/>
-            <div className="lowerPlayScreen" >
+            <GameBoard cards={cards} setGameCards={setCards} guessMode={guessMode} setGuessedCard={setGuessedCard} /><br/>
+            <div className = "lowerPlayScreen" >
                 <PlayerCard card={playerCard} />
                 <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCards={setCards} />
-                <GuessCard playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} />
+                <GuessCard playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} />
             </div>
         </div>   
     )

@@ -3,10 +3,17 @@ import PlayerCard from './PlayerCard'
 import Forms from './Forms'
 import GuessCard from './GuessCard'
 import { useNavigate } from "react-router-dom";
+import { soundClip } from './soundClip';
+import {useEffect} from 'react'
+
 
 const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, secretCard, cardToGuess, guessMode, setGuessMode, guessedCard, setGuessedCard }) => {
     const navigate = useNavigate()
 
+    useEffect(() => {
+        soundClip()
+    },[])
+       
     if (cardSet.length < 1) {
         navigate("/StartScreen")
         return <div></div>

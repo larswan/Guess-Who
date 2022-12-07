@@ -5,7 +5,7 @@ const WinnerScreen = ({playerTurn, guessedCard}) => {
 
     const navigate = useNavigate();
 
-    if (guessedCard!=1) {
+    if (guessedCard!="anything") {
         navigate("/")
     }
     else {

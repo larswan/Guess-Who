@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-// import './App.css'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,10 +9,8 @@ import PlayScreen from './PlayScreen'
 import StartScreen from './StartScreen'
 import WinnerScreen from './WinnerScreen'
 import PokeBallSpinner from './PokeBallSpinner'
-// import {placeholder24cards} from './placeholder24cards'
 
 function App() {
-  // const [cards, setCards] = useState([])
   const [playerTurn, setPlayerTurn] = useState([0])
   const [secretCard, setSecretCard] = useState([])
   const [guessMode, setGuessMode] = useState(false)

@@ -11,13 +11,13 @@ function getRndInteger(min, max) {
     return rndmNum
 }
 
-function StartScreen({ cards, setCards, setCardSet, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
+function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
     
     const navigate = useNavigate()
     
     //default to landing page if random cards not generated
     useEffect(() => {
-        if (cards.length < 24) {
+        if (cardSet[0].length < 24) {
             navigate("./")
         }
     }, [])
@@ -32,15 +32,13 @@ function StartScreen({ cards, setCards, setCardSet, playerTurn, setPlayerTurn, s
             let addPoke = filteredCards[rndmInt]
             
             if (!addedNumbers.includes(rndmInt)) {
-                tempCards.push({ "name": addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers, "faceUp": true })
+                tempCards.push({ "name": addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers, "faceUp": false })
                 addedNumbers.push(rndmInt)
                 i++
             }
         }
 
         setCardSet([tempCards, tempCards])
-        setCards(tempCards)
-        console.log(tempCards)
     }, [])
     
     return (
@@ -54,7 +52,7 @@ function StartScreen({ cards, setCards, setCardSet, playerTurn, setPlayerTurn, s
             </div>
             <div className="CardContainer">
                 {
-                    cards.map((card) => {
+                    cardSet.map((card) => {
                         return (
                             <PickCard card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card} />
                         )

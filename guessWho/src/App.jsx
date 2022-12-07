@@ -13,8 +13,8 @@ import WinnerScreen from './WinnerScreen'
 // import {placeholder24cards} from './placeholder24cards'
 
 function App() {
-  const [cards, setCards] = useState([])
-  const [playerTurn, setPlayerTurn] = useState([1])
+  // const [cards, setCards] = useState([])
+  const [playerTurn, setPlayerTurn] = useState([0])
   const [p1Card, setP1Card] = useState({
     "id": "base1-1",
     "name": "Alakazam",
@@ -148,10 +148,10 @@ function App() {
   // NEW STATES
   const [cardSet, setCardSet]= useState([])
 
-  useEffect(()=>{
-    setP1CardSet(cards)
-    setP2CardSet(cards)
-  },[cards])
+  // useEffect(()=>{
+  //   setP1CardSet(cards)
+  //   setP2CardSet(cards)
+  // },[cards])
 
   // player turn effects
   useEffect(()=>{
@@ -194,11 +194,11 @@ function App() {
     },
     {
       path: "/StartScreen", 
-      element: <StartScreen cards={cards} setCards={setCards} setCardSet={setCardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card}  />,
+      element: <StartScreen cardSet={cardSet} setCardSet={setCardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card}  />,
     },
     {
       path: "/PlayScreen", 
-      element: <PlayScreen cards={displayCards} setCards={playerTurn == 1 ? setP1CardSet : setP2CardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} playerCard={playerCard} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} setGuessedCard={setGuessedCard}/>,
+      element: <PlayScreen cards={cardSet[playerTurn]} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} playerCard={playerCard} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} setGuessedCard={setGuessedCard}/>,
     },
     {
       path: "/WinnerScreen", 

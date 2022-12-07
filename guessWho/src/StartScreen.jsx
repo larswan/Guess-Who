@@ -1,6 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import PickCard from './PickCard'
 import { useNavigate } from "react-router-dom";
+import PokeBallSpinner from './PokeBallSpinner'
+
 
 // Components and data import
 import { filteredCards } from './filteredCards'
@@ -14,17 +16,19 @@ function getRndInteger(min, max) {
 function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
     
     const navigate = useNavigate()
+    const [loaded, setLoaded] = useState(false)
     
     //default to landing page if random cards not generated
     useEffect(() => {
-        if (cardSet[0].length < 24) {
+        console.log(cardSet)
+        if (cardSet==[]) {
             navigate("./")
         }
     }, [])
-
+    
     useEffect(() => {
-        let i = 0
         let tempCards = []
+        let i = 0
         let addedNumbers = []
         
         while (i < 24) {
@@ -38,25 +42,23 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setP1Card
             }
         }
 
-        setCardSet([tempCards, tempCards])
+        setCardSet([tempCards,tempCards])
+        // setIsLoaded(true)
     }, [])
     
     return (
         <div className="App">
             <div>
-                <h1>Player {playerTurn} choose your card:</h1> 
-                {/* <a></a>
-                <a >
-                    <img src='https://github.com/larswan/Guess-Who/blob/main/guessWho/pokeball%20icon.png?raw=true' className="logo" alt="React logo" />
-                </a> */}
+                <h1>Player {(playerTurn + 1)} choose your card:</h1> 
             </div>
             <div className="CardContainer">
-                {
-                    cardSet.map((card) => {
+                {cardSet.length > 0 ?
+                    cardSet[0].map((card) => {
                         return (
                             <PickCard card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card} />
                         )
                     })
+                    : null
                 }
             </div>
         </div>

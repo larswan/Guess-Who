@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const Forms = ({setPlayerTurn, cards}) => {
+const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
     const [formStep, setFormStep] = useState('player1Question')
     const [p1q, setp1q] = useState('')
     const [p2q, setp2q] = useState('')
@@ -57,7 +57,7 @@ const Forms = ({setPlayerTurn, cards}) => {
                         {oldP1Q == '' ? <a></a> : <h1>{oldP1Q}<br />{p2r}</h1>}
                         <h3>Player 1 Enter Your Question</h3>
                         <input id="player1Question" onChange={(e) => { setp1q(e.target.value); console.log(p1q) }} type='textarea' placeholder="What is your question?" name="player1question" className="input" /> <br />
-                        <button  className="input" type="submit" onClick={() => { setOldP1Q(p1q) ;setFormStep('player2Response'); setPlayerTurn(2)}}> Next </button>
+                        <button  className="input" type="submit" onClick={() => { setOldP1Q(p1q) ;setFormStep('player2Response'); setPlayerTurn(1)}}> Next </button>
                     </div>
                 }
                 
@@ -73,7 +73,7 @@ const Forms = ({setPlayerTurn, cards}) => {
                         {oldP2Q == '' ? <a></a> : <h1>{oldP2Q}<br/>{p1r}</h1>}
                         <h3>Player 2 Enter Your Question</h3>
                         <input  id="player2Question" onChange={(e) => { setp2q(e.target.value); console.log(p2q) }} type='textarea' placeholder="What is your question?" name="player2question" className="input" /> <br />
-                        <button  className="input" type="submit" onClick={() => { setOldP2Q(p2q); setFormStep('player1Response'); setPlayerTurn(1)}}> Next </button>
+                        <button  className="input" type="submit" onClick={() => { setOldP2Q(p2q); setFormStep('player1Response'); setPlayerTurn(0)}}> Next </button>
                     </div>
                 }
             </form>

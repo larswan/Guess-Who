@@ -1,25 +1,26 @@
-import GameBoard from './GameBoard'
+import CardContainer from './CardContainer'
 import PlayerCard from './PlayerCard'
 import Forms from './Forms'
 import GuessCard from './GuessCard'
 import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 
-const PlayScreen = ({ cards, playerTurn, setPlayerTurn, playerCard, setCards, cardToGuess, guessMode, setGuessMode, guessedCard, setGuessedCard }) => {
+const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, playerCard, cardToGuess, guessMode, setGuessMode, guessedCard, setGuessedCard }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (cards.length < 24) {
+        //console.log(cardSet)
+        if (cardSet == []) {
             navigate("/StartScreen")
         }
     }, [])
 
     return(
         <div>
-            <GameBoard cards={cards} setGameCards={setCards} guessMode={guessMode} setGuessMode={setGuessMode} setGuessedCard={setGuessedCard} /><br/>
+            <CardContainer cardSet={cardSet} setCardSet={setCardSet} guessMode={guessMode} playerTurn={playerTurn} setGuessMode={setGuessMode} setGuessedCard={setGuessedCard} /><br/>
             <div className = "lowerPlayScreen" >
                 <PlayerCard card={playerCard} />
-                <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCards={setCards} />
+                <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCardSet={setCardSet} />
                 <GuessCard playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} />
             </div>
         </div>   

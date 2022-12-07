@@ -6,19 +6,19 @@ function PickCard({ card, playerTurn, setPlayerTurn, setP1Card, setP2Card }) {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        setPlayerTurn(1)
+        setPlayerTurn(0)
     },[])
 
 
     const clickHandler = (card) => {
-        if (playerTurn === 1){
+        if (playerTurn === 0){
             setP1Card(card)
-            setPlayerTurn(2)
+            setPlayerTurn(1)
         }
         else {
             // Route to player1screen
             setP2Card(card)
-            setPlayerTurn(1)
+            setPlayerTurn(0)
             navigate("/PlayScreen")}
         }
 

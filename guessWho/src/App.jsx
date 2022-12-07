@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react'
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
   useNavigate
 } from "react-router-dom";
 
 import PlayScreen from './PlayScreen'
 import StartScreen from './StartScreen'
 import WinnerScreen from './WinnerScreen'
+import PokeBallSpinner from './PokeBallSpinner'
 // import {placeholder24cards} from './placeholder24cards'
 
 function App() {
@@ -155,34 +155,31 @@ function App() {
 
   // player turn effects
   useEffect(()=>{
-   if(playerTurn==1){
+   if(playerTurn==0){
      document.body.style.backgroundColor = "#ab2c2c"
-     setDisplayCards(p1CardSet)
      setCardToGuess(p2Card)
      setPlayerCard(p1Card)
     }
     else{
      document.body.style.backgroundColor =  "#2c37ab"
-     setDisplayCards(p2CardSet)
      setCardToGuess(p1Card)
      setPlayerCard(p2Card)
    }
+   console.log(playerTurn)
   },[playerTurn])
   
   const Home = () => {
     const navigate = useNavigate() 
 
+    // Reset PlayerTurn to 0
     useEffect(()=>{
-      setPlayerTurn(1)
+      setPlayerTurn(0)
     },[])
     
     return (
-      <div>
+      <div onClick={() => { navigate("/StartScreen") }}>
         <h1>Click to Start Game</h1>
-        <a></a>
-        <a>
-          <img onClick={() => { navigate("/StartScreen") }} src='https://github.com/larswan/Guess-Who/blob/main/guessWho/pokeball%20icon.png?raw=true' className="logo" alt="Start game" />
-        </a>
+        <PokeBallSpinner />
       </div>
     )
   }
@@ -198,7 +195,7 @@ function App() {
     },
     {
       path: "/PlayScreen", 
-      element: <PlayScreen cards={cardSet[playerTurn]} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} playerCard={playerCard} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} setGuessedCard={setGuessedCard}/>,
+      element: <PlayScreen cardSet={cardSet} setCardSet={setCardSet} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} playerCard={playerCard} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} setGuessedCard={setGuessedCard}/>,
     },
     {
       path: "/WinnerScreen", 

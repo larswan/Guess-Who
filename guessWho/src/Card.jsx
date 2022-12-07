@@ -19,7 +19,7 @@ function Card({card, cards, setGameCards, i, guessMode, setGuessMode, setGuessed
 
     return(
         <div className="CardDiv">
-            <img className="Card" onClick={() => {clickHandler(card)}}  src={!card.faceUp ? card.images.large : faceDownImage} />
+            <img className="Card" onClick={() => {clickHandler(card)}}  src={!card.faceUp ? card.image : faceDownImage} />
         </div>
     )
 }

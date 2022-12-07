@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import Button from '@mui/material/Button'
 import PickCard from './PickCard'
 import { useNavigate } from "react-router-dom";
 
@@ -13,33 +12,34 @@ function getRndInteger(min, max) {
 }
 
 function StartScreen({cards, setCards, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
+    
     const navigate = useNavigate()
     
+    //default to landing page if random cards not generated
     useEffect(() => {
         if (cards.length < 24) {
             navigate("./")
         }
     }, [])
 
-
     useEffect(() => {
-        console.log(cards)
         let i = 0
         let tempCards = []
-
+        
         while (i < 24) {
             let rndmInt = getRndInteger(0, 69)
             let addPoke = filteredCards[rndmInt]
-
+            
             if (!tempCards.includes(addPoke)) {
-                tempCards.push(addPoke)
+                tempCards.push({ "name": addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers })
                 i++
             }
         }
         
-        let updatedCards = tempCards.map((x) => ({"name":x.name, "images": x.images, "id": x.nationalPokedexNumbers}))
+        //let updatedCards = tempCards.map((addPoke) => ({"name":addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers}))
         setCards(tempCards)
         
+        console.log(tempCards)
     }, [])
     
     return (

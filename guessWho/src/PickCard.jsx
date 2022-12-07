@@ -24,7 +24,7 @@ function PickCard({ card, playerTurn, setPlayerTurn, setP1Card, setP2Card }) {
 
     return (
         <div className="CardDiv">
-            <img onClick={() => { clickHandler(card) }} className="Card" src={card.images.large} key={card.nationalPokedexNumbers}/>
+            <img onClick={() => { clickHandler(card) }} className="Card" src={card.image} key={card.nationalPokedexNumbers}/>
         </div>
     )
 }

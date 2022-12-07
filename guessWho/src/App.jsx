@@ -10,7 +10,7 @@ import {
 import PlayScreen from './PlayScreen'
 import StartScreen from './StartScreen'
 import WinnerScreen from './WinnerScreen'
-import {placeholder24cards} from './placeholder24cards'
+// import {placeholder24cards} from './placeholder24cards'
 
 function App() {
   const [cards, setCards] = useState([])

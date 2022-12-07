@@ -4,10 +4,9 @@ const faceDownImage = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f
 const PlayerCard = ({card}) => {
     const [hover, setHover] = useState(false)
 
-
     return(
         <div>
-            <img onMouseOver={() => { setHover(true) }} onMouseOut={() => { setHover(false) }}  src={ hover ? card.images.large : faceDownImage } className ="playerCard"/>
+            <img onMouseOver={() => { setHover(true) }} onMouseOut={() => { setHover(false) }}  src={ hover ? card.largeImage : faceDownImage } className ="playerCard"/>
         </div>
     )
 }

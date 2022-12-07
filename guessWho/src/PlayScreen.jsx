@@ -16,7 +16,7 @@ const PlayScreen = ({ cards, playerTurn, setPlayerTurn, playerCard, setCards, ca
 
     return(
         <div>
-            <GameBoard cards={cards} setGameCards={setCards} guessMode={guessMode} setGuessedCard={setGuessedCard} /><br/>
+            <GameBoard cards={cards} setGameCards={setCards} guessMode={guessMode} setGuessMode={setGuessMode} setGuessedCard={setGuessedCard} /><br/>
             <div className = "lowerPlayScreen" >
                 <PlayerCard card={playerCard} />
                 <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCards={setCards} />

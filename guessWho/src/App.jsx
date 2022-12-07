@@ -163,12 +163,15 @@ function App() {
      setCardToGuess(p1Card)
      setPlayerCard(p2Card)
    }
-
-
   },[playerTurn])
   
   const Home = () => {
     const navigate = useNavigate() 
+
+    useEffect(()=>{
+      setPlayerTurn(1)
+    },[])
+    
     return (
       <div>
         <h1>Click to Start Game</h1>

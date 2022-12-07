@@ -1,4 +1,5 @@
 import { useNavigate} from "react-router-dom";
+import { useEffect } from "react"
 
 const GuessCard = ({ playerTurn, setPlayerTurn, cardToGuess, guessMode, setGuessMode, guessedCard }) => {
     const blueButton = "https://github.com/larswan/Guess-Who/blob/main/guessWho/blue%20guess%20card.png?raw=true"
@@ -7,19 +8,19 @@ const GuessCard = ({ playerTurn, setPlayerTurn, cardToGuess, guessMode, setGuess
     const navigate = useNavigate()
 
     const handleClick = () => {
-        console.log(guessMode)
         setGuessMode(true)
-        
-        if(guessedCard==cardToGuess){
-            navigate("/WinnerScreen")
-            setGuessMode(false)
-        }
-        else{
-            setPlayerTurn(playerTurn === 1 ? 2 : 1)
-            setGuessMode(false)
-            
-        }
+        console.log(guessMode)
     }
+
+    useEffect(() => {
+        console.log(guessedCard.name + cardToGuess.name)
+        if (guessedCard.name == cardToGuess.name) {
+            navigate("/WinnerScreen")
+        }
+        else {
+            setPlayerTurn(playerTurn === 1 ? 2 : 1)
+        }
+    }, [guessedCard])
 
     return(
         <div>

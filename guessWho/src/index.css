@@ -69,7 +69,6 @@ h1 {
 
 .GuessButton:hover {
   width: 9.3em;
-  
 }
 
 .playerCard {
@@ -77,19 +76,11 @@ h1 {
   width: 196px;
   padding: .5em;
   border-radius: 15px; 
-  /* position: fixed;
-  top: 0;
-  transition: top ease 0.5s;  */
   }
 
   .playerCard:hover{
       filter: drop-shadow(0 0 2em #fff93d);
   }
-
-/* 
-  playerCard:hover {
-    top: -10px;
-  } */
 
 .input{
   width: 39em;
@@ -122,4 +113,29 @@ h1 {
   .logo {
     animation: logo-spin infinite 20s linear;
   }
+}
+
+.WinnerScreen {
+  display: flex;
+  justify-content: center;
+}
+
+.WinnerLeft{
+  width: 40%
+}
+
+.WinningCard {
+  width: 100%;
+  border-radius: 7px;
+  filter: drop-shadow(0 0 2em #fff93d);
+  transition: filter 10s;
+}
+
+.WinningCard:hover {
+    filter: drop-shadow(0 0 8em #000000);
+}
+
+
+.WinnerLeft {
+  width: 40%;
 }

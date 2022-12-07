@@ -25,7 +25,7 @@ function App() {
      setCardToGuess(secretCard[1])
     }
     else{
-     document.body.style.backgroundColor =  "#2c30ab"
+     document.body.style.backgroundColor =  "#312476"
      setCardToGuess(secretCard[0])
    }
   },[playerTurn])

@@ -10,6 +10,8 @@ const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, secretCard
     const navigate = useNavigate()
 
     useEffect(() => {
+
+        // Whos That Pokemon Sound Clip
         // soundClip()
         console.log(secretCard)
     },[])

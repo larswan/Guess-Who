@@ -49,9 +49,6 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setSecret
     
     return (
         <div className="App">
-            <div>
-                <h1>Player {(playerTurn + 1)} choose your card:</h1> 
-            </div>
             <div className="CardContainer">
                 {cardSet.length > 1 && cardSet[1].length>23 ?
                     cardSet[0].map((card) => {
@@ -61,6 +58,9 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setSecret
                     })
                     : null
                 }
+            </div>
+            <div>
+                <h1>Player {(playerTurn + 1)} choose your card</h1> 
             </div>
         </div>
     )

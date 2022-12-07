@@ -22,7 +22,9 @@ const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
         }
     } 
     questionMarkAdder(oldP1Q)
+
     },[oldP1Q])
+
     useEffect(() => {
             const questionMarkAdder = (string) => {
                 if (string.includes('?') || string == '') {
@@ -31,7 +33,7 @@ const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
                 else {
                     let tempString = `${string}?`
                     console.log(tempString)
-                    setOldP1Q(tempString)
+                    setOldP2Q(tempString)
                 }
             }
             questionMarkAdder(oldP2Q)
@@ -43,16 +45,19 @@ const Forms = ({setPlayerTurn, cardSet, setCardSet}) => {
         console.log("it submitted")
     }
 
+    
     const p1QdumbFunction= ()=>{
         setOldP1Q(p1q); 
         setFormStep('player2Response'); 
         setPlayerTurn(1)
+        console.log("old p1Q is" + oldP1Q + " and oldP2Q is "+ oldP2Q)
     }
-
+    
     const p2QdumbFunction= ()=>{
-        setOldP2Q(p2q); 
+        setOldP2Q(p2q);  
         setFormStep('player1Response'); 
         setPlayerTurn(0)
+        console.log("old p1Q is" + oldP1Q + " and oldP2Q is "+ oldP2Q)
     }
 
     return (

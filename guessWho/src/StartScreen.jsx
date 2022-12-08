@@ -37,7 +37,7 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setSecret
             let addPoke = filteredCards[rndmInt]
             
             // Beedrill doesn't have a small image so forget about it
-            if (!addedNumbers.includes(rndmInt) && rndmInt != 16) {
+            if (!addedNumbers.includes(rndmInt) && rndmInt != 16 && rndmInt != 25) {
                 tempCards.push({ "name": addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers, "faceUp": false })
                 addedNumbers.push(rndmInt)
                 i++

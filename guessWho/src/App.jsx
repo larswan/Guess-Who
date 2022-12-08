@@ -39,7 +39,7 @@ function App() {
     },[])
     
     return (
-      <div onClick={() => { navigate("/StartScreen") }}>
+      <div className="HomeDiv" onClick={() => { navigate("/StartScreen") }}>
         <h1>Click to Start Game</h1>
         <PokeBallSpinner />
       </div>

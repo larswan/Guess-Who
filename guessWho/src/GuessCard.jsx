@@ -1,7 +1,7 @@
 import { useNavigate} from "react-router-dom";
 import { useEffect } from "react"
 
-const GuessCard = ({ playerTurn, setPlayerTurn, cardToGuess, guessMode, setGuessMode, guessedCard }) => {
+const GuessCard = ({ setp1r, setp2r, formStep, setFormStep, setOldP1Q, setOldP2Q, playerTurn, setPlayerTurn, cardToGuess, guessMode, setGuessMode, guessedCard }) => {
     const blueButton = "https://github.com/larswan/Guess-Who/blob/main/blue%20guess%20card.PNG?raw=true"
     const redButton = "https://github.com/larswan/Guess-Who/blob/main/guessWho/red%20guesscard.png?raw=true"
 
@@ -20,7 +20,17 @@ const GuessCard = ({ playerTurn, setPlayerTurn, cardToGuess, guessMode, setGuess
         if (guessedCard.name == cardToGuess.name) {
             navigate("/WinnerScreen")
         }
-        else {
+        else if (playerTurn==0){
+            setOldP1Q('')
+            setp2r('')
+            setFormStep('player2Response')
+            setPlayerTurn(playerTurn === 0 ? 1 : 0)
+            return
+        }
+        else if (playerTurn==1){
+            setOldP2Q('')
+            setp1r('')
+            setFormStep('player1Response')
             setPlayerTurn(playerTurn === 0 ? 1 : 0)
         }
     }, [guessedCard])

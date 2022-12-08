@@ -32,6 +32,15 @@ h1 {
     line-height: 1.1;
 }
 
+p {
+  padding: 0;
+  margin: 0
+}
+
+.HomeDiv {
+  padding-top: 12em;
+}
+
 .CardContainer {
   display: flex;
   flex-wrap: wrap;
@@ -52,7 +61,7 @@ h1 {
 .Card {
   position: relative;
   width: 100%;
-  
+  border: 2px solid transparent;
   /* height: 192.5px; */
   border-radius: .4em;
 }
@@ -98,26 +107,25 @@ h1 {
 
 .PlayerCard:hover{
       filter: drop-shadow(0 0 2em #000000);
-      transform: translateY(-50%)
+      transform: translateY(-35%)
   }
 
 .FormContainer {
   width: 70%;
-  padding: 2%
-  padding-right: 
+  padding: 2% 
 }
 
 .FormContainerDiv {
   display: flex;
   width: 100%;
-
-
 }
 
 .CardGuess {
   position: relative;
-  /* width: 100%; */
-  filter: drop-shadow(0 0 .2em #ffffffa9);
+  width: 100%;
+  border: 2px solid #ffffffbc;
+  background-color: #ffffffbc;
+  /* filter: drop-shadow(0 0 .2em #ffffff); */
   /* height: 192.5px; */
   border-radius: .4em;
 }
@@ -178,7 +186,8 @@ h3 {
 }
 
 .WinnerLeft{
-  width: 40%
+  width: 40%;
+  padding-right: 8em;
 }
 
 .WinningCard {
@@ -186,13 +195,19 @@ h3 {
   border-radius: 7px;
   filter: drop-shadow(0 0 2em #fff93d);
   transition: filter 10s;
+  padding-top: 2em;
 }
 
 .WinningCard:hover {
+  
     filter: drop-shadow(0 0 8em #fff93d);
 }
 
 
 .WinnerLeft {
   width: 40%;
+}
+
+.WinnerRight {
+  padding-top: 13em;
 }

@@ -1,9 +1,8 @@
-import { useEffect } from 'react'
-import Button from '@mui/material/Button'
-import PickCard from './PickCard'
+import { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
 // Components and data import
+import PickCard from './PickCard'
 import { filteredCards } from './filteredCards'
 
 //random number generator
@@ -12,53 +11,56 @@ function getRndInteger(min, max) {
     return rndmNum
 }
 
-function StartScreen({cards, setCards, playerTurn, setPlayerTurn, setP1Card, setP2Card}) {
-    const navigate = useNavigate()
+function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setSecretCard}) {
     
+    const navigate = useNavigate()
+    const [loaded, setLoaded] = useState(false)
+    
+    //default to landing page if random cards not generated
     useEffect(() => {
-        if (cards.length < 24) {
+        if (cardSet==[]) {
             navigate("./")
         }
+        else{
+            setPlayerTurn(0)
+        }
     }, [])
-
-
+    
+    // generate random 24 cards
     useEffect(() => {
-        console.log(cards)
-        let i = 0
         let tempCards = []
-
+        let i = 0
+        let addedNumbers = []
+        
         while (i < 24) {
-            let rndmInt = getRndInteger(0, 69)
+            let rndmInt = getRndInteger(1, 69)
             let addPoke = filteredCards[rndmInt]
-
-            if (!tempCards.includes(addPoke)) {
-                tempCards.push(addPoke)
+            
+            // Beedrill doesn't have a small image so forget about it
+            if (!addedNumbers.includes(rndmInt) && rndmInt != 16 && rndmInt != 25) {
+                tempCards.push({ "name": addPoke.name, "image": addPoke.images.small, "largeImage": addPoke.images.large, "id": addPoke.nationalPokedexNumbers, "faceUp": false })
+                addedNumbers.push(rndmInt)
                 i++
             }
         }
-        
-        let updatedCards = tempCards.map((x) => ({"name":x.name, "images": x.images, "id": x.nationalPokedexNumbers}))
-        setCards(tempCards)
-        
+
+        setCardSet([tempCards,tempCards])
     }, [])
     
     return (
         <div className="App">
-            <div>
-                <h1>Player {playerTurn} choose your card:</h1> 
-                {/* <a></a>
-                <a >
-                    <img src='https://github.com/larswan/Guess-Who/blob/main/guessWho/pokeball%20icon.png?raw=true' className="logo" alt="React logo" />
-                </a> */}
-            </div>
             <div className="CardContainer">
-                {
-                    cards.map((card) => {
+                {cardSet.length > 1 && cardSet[1].length>23 ?
+                    cardSet[0].map((card) => {
                         return (
-                            <PickCard card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setP1Card={setP1Card} setP2Card={setP2Card} />
+                            <PickCard key={card.id} card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setSecretCard={setSecretCard}/>
                         )
                     })
+                    : null
                 }
+            </div>
+            <div>
+                <h1>Player {(playerTurn + 1)} choose your card</h1> 
             </div>
         </div>
     )

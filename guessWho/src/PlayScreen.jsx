@@ -1,29 +1,40 @@
-import GameBoard from './GameBoard'
+import CardContainer from './CardContainer'
 import PlayerCard from './PlayerCard'
 import Forms from './Forms'
-import GuessCard from './GuessCard'
-import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import {useEffect}  from 'react'
+import { soundClip } from './soundClip';
 
-const PlayScreen = ({ cards, playerTurn, setPlayerTurn, playerCard, setCards, cardToGuess, guessMode, setGuessMode, guessedCard, setGuessedCard }) => {
+const PlayScreen = ({ cardSet, setCardSet, playerTurn, setPlayerTurn, secretCard, cardToGuess, guessMode, setGuessMode, guessedCard, setGuessedCard }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (cards.length < 24) {
-            navigate("/StartScreen")
-        }
-    }, [])
 
+        // Whos That Pokemon Sound Clip
+        // soundClip()
+        console.log(secretCard)
+    },[])
+       
+    if (cardSet.length < 1) {
+        navigate("/StartScreen")
+        return <div></div>
+    }
+    else{
     return(
         <div>
-            <GameBoard cards={cards} setGameCards={setCards} guessMode={guessMode} setGuessMode={setGuessMode} setGuessedCard={setGuessedCard} /><br/>
+            <CardContainer cardSet={cardSet} setCardSet={setCardSet} guessMode={guessMode} playerTurn={playerTurn} setGuessMode={setGuessMode} setGuessedCard={setGuessedCard} /><br/>
             <div className = "lowerPlayScreen" >
-                <PlayerCard card={playerCard} />
-                <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCards={setCards} />
-                <GuessCard playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} />
+                <div className="PlayerCard">
+                    <PlayerCard secretCard={secretCard[playerTurn]} />
+                </div>
+                <div className="FormContainer">
+                    <Forms playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setCardSet={setCardSet} cardToGuess={cardToGuess} guessMode={guessMode} setGuessMode={setGuessMode} guessedCard={guessedCard} />
+                </div>
+                
             </div>
         </div>   
     )
+}
 }
 
 export default PlayScreen

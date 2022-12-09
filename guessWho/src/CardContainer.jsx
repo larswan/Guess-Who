@@ -1,15 +1,13 @@
 import Card from './Card'
-import { useEffect } from 'react'
 
-
-function CardContainer({ cards, setGameCards, guessMode, setGuessMode, setGuessedCard }) {
+function CardContainer({ cardSet, setCardSet, guessMode, setGuessMode, setGuessedCard, playerTurn }) {
     
     return(
         <div className="CardContainer" >
             {
-                cards.map((card, i)=>{
+                cardSet[playerTurn].map((card, i)=>{
                     return (
-                        <Card card={card} cards={cards} setGameCards={setGameCards} i={i} guessMode={guessMode} setGuessMode={setGuessMode} setGuessedCard={setGuessedCard} />
+                        <Card card={card} cardSet={cardSet} setCardSet={setCardSet} playerTurn={playerTurn} i={i} guessMode={guessMode} setGuessMode={setGuessMode} setGuessedCard={setGuessedCard} />
                     )
                 })
             }

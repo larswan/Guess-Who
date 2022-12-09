@@ -2,29 +2,22 @@ import { useNavigate } from "react-router-dom";
 import {useEffect } from "react"
 
 
-function PickCard({ card, playerTurn, setPlayerTurn, setP1Card, setP2Card }) {
+function PickCard({ card, playerTurn, setPlayerTurn, setSecretCard}) {
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        setPlayerTurn(1)
-    },[])
-
-
     const clickHandler = (card) => {
-        if (playerTurn === 1){
-            setP1Card(card)
-            setPlayerTurn(2)
+        if (playerTurn === 0){
+            setSecretCard([card])
+            setPlayerTurn(1)
         }
         else {
-            // Route to player1screen
-            setP2Card(card)
-            setPlayerTurn(1)
+            setSecretCard((prev)=>{return [...prev, card]})
             navigate("/PlayScreen")}
         }
 
     return (
         <div className="CardDiv">
-            <img onClick={() => { clickHandler(card) }} className="Card" src={card.images.large} key={card.nationalPokedexNumbers}/>
+            <img onClick={() => { clickHandler(card) }} className="Card" src={card.image} key={card.nationalPokedexNumbers}/>
         </div>
     )
 }

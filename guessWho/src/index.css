@@ -56,18 +56,21 @@ p {
   padding: .3em;
 }
 
-
-
 .Card {
   position: relative;
   width: 100%;
   border: 2px solid transparent;
   /* height: 192.5px; */
   border-radius: .4em;
+  transition: ease-in-out .1s;
 }
 
 .Card:hover {
-  filter: drop-shadow(0 0 .2em #fff93d);
+  filter: drop-shadow(1px 4px .2em #0000006b);
+  transform: translateY(-1%);
+  scale: 1.01;
+  border: 2px solid transparent;
+  border-radius: .4em;
 }
 
 .lowerPlayScreen {
@@ -80,7 +83,7 @@ p {
 
 .GuessButton {
   width: 9em;
-    filter: drop-shadow(0 0 0em rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 0 0em rgba(0, 0, 0, 0.45));
   transition: filter .2s, ease-in-out .2s;
 
   align-content: right;
@@ -104,12 +107,13 @@ p {
 
 .PlayerCard {
   padding: .5em;
-  transition: all .25s ease-in-out;
+  transition: all .18s ease-in-out;
   }
 
 .PlayerCard:hover{
-      filter: drop-shadow(0 0 2em #000000);
-      transform: translateY(-35%)
+      filter: drop-shadow(8px 25px 25px #000000b4);
+      transform: translateY(-25%);
+      scale: 1.1;
   }
 
 .FormContainer {
@@ -193,11 +197,11 @@ h3 {
 }
 
 .WinningCard {
+  margin-top: 2em;
   width: 100%;
   border-radius: 7px;
   filter: drop-shadow(0 0 2em #fff93d);
   transition: filter 10s;
-  padding-top: 2em;
 }
 
 .WinningCard:hover {

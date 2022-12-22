@@ -112,14 +112,22 @@ p {
   transform: width(4px);
 }
 
-.BigCard {
-  height: 265px;
-  width: 196px;
-  border-radius: 9px; 
+.BigCardImage {
+  position: relative;
+    width: 90%;
+    margin-top: 2.5%;
+    border-radius: .2em;
+    /* border: 2px solid transparent; */
+    /* height: 192.5px; */
+    transition: ease-in-out .1s;
 }
 
 .PlayerCard {
-  padding: .5em;
+  height: 240px;
+  width: 210px;
+  background-color: aliceblue;
+  border-radius: 9px; 
+  margin: .5em;
   transition: all .18s ease-in-out;
   }
 
@@ -127,6 +135,12 @@ p {
       filter: drop-shadow(8px 25px 25px #000000b4);
       transform: translateY(-25%);
       scale: 1.1;
+  }
+
+  .QuestionMark {
+    /* margin-top: 40px; */
+    font-weight: 1000;
+    color: black;
   }
 
 .FormContainer {

@@ -48,29 +48,42 @@ p {
   align-items: center;
   margin: auto;
   width: 100%;
+  position:relative
   
 }
 
 .CardDiv {
-  width: 11%;
-  padding: .3em;
+  width: 144px;
+  height: 160px;
+  margin: .3em;
+  border-radius: .2em;
+  background-color: aliceblue;
+  border: 2px solid transparent;
+  text-align: center;
 }
 
 .Card {
   position: relative;
-  width: 100%;
-  border: 2px solid transparent;
+  width: 90%;
+  margin-top: 2.5%;
+  border-radius: .2em;
+  /* border: 2px solid transparent; */
   /* height: 192.5px; */
-  border-radius: .4em;
   transition: ease-in-out .1s;
 }
 
-.Card:hover {
+.peopleNames {
+  color: black;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.CardDiv:hover {
   filter: drop-shadow(1px 4px .2em #0000006b);
-  transform: translateY(-1%);
-  scale: 1.01;
-  border: 2px solid transparent;
-  border-radius: .4em;
+  /* transform: translateY(-1%); */
+  /* scale: 1.01; */
+  /* border: 2px solid transparent; */
 }
 
 .lowerPlayScreen {

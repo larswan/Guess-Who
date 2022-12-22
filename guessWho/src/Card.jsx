@@ -22,10 +22,14 @@ function Card({card, cardSet, setCardSet, playerTurn, i, guessMode, setGuessMode
     }  
 
     return(
-        <div className="CardDiv">
-            <img className={guessMode && !card.faceUp ? "CardGuess" : "Card" } onClick={() => {clickHandler(card)}}  src={!card.faceUp ? card.image : faceDownImage} />
-        </div>
-    )
+        <div className="CardDiv" onClick={() => { clickHandler(card) }} >
+            {!card.faceUp? 
+            <img className="Card" src={card.image} />
+        : null}
+            </div>
+            )
 }
 
 export default Card
+
+// attempted state dependent card change from within cardDiv style = {{ backgroundColor: "black" }}

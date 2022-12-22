@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 // Components and data import
 import PickCard from './PickCard'
-import { filteredCards } from './filteredCards'
+// import { filteredCards } from './filteredCards'
 import { peopleCards } from './peopleCards'
 
 //random number generator
-function getRndInteger(min, max) {
-    let rndmNum = Math.floor(Math.random() * (max - min)) + min;
-    return rndmNum
-}
+// function getRndInteger(min, max) {
+//     let rndmNum = Math.floor(Math.random() * (max - min)) + min;
+//     return rndmNum
+// }
 
 function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setSecretCard}) {
     
@@ -19,17 +19,18 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setSecret
     
     // default to landing page if random cards not generated
     useEffect(() => {
-        setCardSet(peopleCards)
          
         if (cardSet==[]) {
-            navigate("http://www.google.com")
+            navigate("/")
         }
         else{
             setPlayerTurn(0)
         }
-        console.log(cardSet)
     }, [])
      
+    useEffect(()=>{
+        setCardSet([peopleCards, peopleCards])
+    },[])
     // generate random 24 cards
     // useEffect(() => {
     //     let tempCards = []
@@ -55,7 +56,7 @@ function StartScreen({ cardSet, setCardSet, playerTurn, setPlayerTurn, setSecret
         <div className="App">
             <div className="CardContainer">
                 {cardSet.length > 1 ?
-                    cardSet.map((card) => {
+                    cardSet[1].map((card) => {
                         return (
                             <PickCard card={card} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setSecretCard={setSecretCard}/>
                         )

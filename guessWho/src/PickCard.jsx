@@ -4,7 +4,6 @@ import {useEffect } from "react"
 
 function PickCard({ card, playerTurn, setPlayerTurn, setSecretCard}) {
     const navigate = useNavigate();
-    console.log(card.image)
 
     const clickHandler = (card) => {
         if (playerTurn === 0){
@@ -19,6 +18,7 @@ function PickCard({ card, playerTurn, setPlayerTurn, setSecretCard}) {
     return (
         <div className="CardDiv">
             <img onClick={() => { clickHandler(card) }} className="Card" src={card.image} />
+            <div className="peopleNames">{card.name}</div>
         </div>
     )
 }

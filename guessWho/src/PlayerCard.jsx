@@ -7,9 +7,16 @@ const PlayerCard = ({secretCard}) => {
 
     return(
         <div onMouseOver={() => { setHover(true); console.log(hover) }} onMouseOut={() => { setHover(false); console.log(hover) }} className="PlayerCard">
-          {hover? <img className="BigCardImage"  src={secretCard.image}/> : <h1 className="QuestionMark"><br/>?<br/>Hover to show your card</h1>}
+        {hover ? 
+        <>
+          <img className="BigCardImage"  src={secretCard.image}/>
+          <div className="peopleNames"><b>{secretCard.name}</b></div>
+        </>
+        : <h1 className="QuestionMark"><br/>?<br/>Hover to show your card</h1>}
+          
         </div>
     )
 }
 
 export default PlayerCard
+

@@ -9,7 +9,7 @@ const WinnerScreen = ({playerTurn, guessedCard}) => {
     return(
         <div className="WinnerScreen">
             <div className="WinnerLeft">
-                <h1>Player {(playerTurn + 1)} Wins!</h1>
+                <h1>It's {guessedCard.name}! Player {(playerTurn + 1)} Wins!</h1>
                 <img className="WinningCard" src={guessedCard.image} />
             </div>
             <div className="WinnerRight">

@@ -26,6 +26,7 @@ function Card({card, cardSet, setCardSet, playerTurn, i, guessMode, setGuessMode
             {!card.faceUp? 
             <img className="Card" src={card.image} />
         : null}
+            <div className="peopleNames"><b>{card.name}</b></div>
             </div>
             )
 }

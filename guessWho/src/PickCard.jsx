@@ -18,7 +18,7 @@ function PickCard({ card, playerTurn, setPlayerTurn, setSecretCard}) {
     return (
         <div className="CardDiv">
             <img onClick={() => { clickHandler(card) }} className="Card" src={card.image} />
-            <div className="peopleNames">{card.name}</div>
+            <div className="peopleNames"><b>{card.name}</b></div>
         </div>
     )
 }
